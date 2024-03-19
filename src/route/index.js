@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controller/upload");
+const uploadController = require("../controller/upload");
+const modelController = require("../controller/models");
 
 let routes = (app) => {
-    router.post("/upload", controller.upload);
-    router.get("/files", controller.getListFiles);
-    router.get("/files/:name", controller.download);
+    router.post("/upload", uploadController.upload);
+    router.get("/files", uploadController.getListFiles);
+    router.get("/files/:name", uploadController.download);
 
     router.post("/model", modelController.addModel);
     router.put("/model/:id", modelController.updateModel);

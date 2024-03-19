@@ -13,38 +13,43 @@ mysqlConnector.query(
         }
         console.log('Database created');
 
-        // Select the database after it has been created
+        // Create table "model" after the database is selected
         mysqlConnector.query(
-            `USE ${process.env.MYSQL_DATABASE}`,
+            `CREATE TABLE IF NOT EXISTS models
+            (
+                id
+                INT
+                AUTO_INCREMENT
+                PRIMARY
+                KEY,
+                file_name
+                VARCHAR
+             (
+                255
+             ),
+                name VARCHAR
+             (
+                 255
+             ),
+                front_wheel VARCHAR
+             (
+                 255
+             ),
+                back_wheel VARCHAR
+             (
+                 255
+             )
+                )`,
             null,
             (err, results) => {
                 if (err) {
-                    console.error('Error selecting database:', err);
+                    console.error('Error creating table:', err);
                     return;
                 }
-                console.log('Database selected');
+                console.log('Table created');
 
-                // Create table "model" after the database is selected
-                mysqlConnector.query(
-                    `CREATE TABLE IF NOT EXISTS models (
-                        id INT AUTO_INCREMENT PRIMARY KEY,
-                        file_name VARCHAR(255),
-                        name VARCHAR(255),
-                        front_wheel VARCHAR(255),
-                        back_wheel VARCHAR(255)
-                    )`,
-                    null,
-                    (err, results) => {
-                        if (err) {
-                            console.error('Error creating table:', err);
-                            return;
-                        }
-                        console.log('Table created');
-
-                        // Close the connection after the table has been created
-                        mysqlConnector.close();
-                    }
-                );
+                // Close the connection after the table has been created
+                mysqlConnector.close();
             }
         );
     }
