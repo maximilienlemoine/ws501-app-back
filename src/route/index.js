@@ -7,6 +7,13 @@ let routes = (app) => {
     router.get("/files", controller.getListFiles);
     router.get("/files/:name", controller.download);
 
+    router.post("/model", modelController.addModel);
+    router.put("/model/:id", modelController.updateModel);
+    router.delete("/model/:id", modelController.deleteModel);
+    router.get("/model", modelController.getModels);
+    router.get("/model/:id", modelController.getModelById);
+
+
     app.use(router);
 };
 
