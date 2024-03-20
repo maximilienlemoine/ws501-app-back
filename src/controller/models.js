@@ -1,24 +1,31 @@
 const MysqlConnector = require('../util/mysqlConnector');
 
-const addModel = (model, callback) =>
+const addModel = (req, res) =>
 {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
-    const {file_name, name, front_wheel, back_wheel} = model;
+    const {file_name, name, front_wheel, back_wheel} = req.body;
     mysqlConnector.query(
         `INSERT INTO models (file_name, name, front_wheel, back_wheel)
          VALUES (?, ?, ?, ?)`,
         [file_name, name, front_wheel, back_wheel],
-        callback
+        function(err, results) {
+            mysqlConnector.close();
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(200).send(results);
+            }
+        }
     );
-    mysqlConnector.close();
 }
 
-const updateModel = (id, model, callback) =>
+const updateModel = (req, res) =>
 {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
-    const {file_name, name, front_wheel, back_wheel} = model;
+    const {file_name, name, front_wheel, back_wheel} = req.body;
+    const {id} = req.params;
     mysqlConnector.query(
         `UPDATE models
          SET file_name = ?,
@@ -27,26 +34,39 @@ const updateModel = (id, model, callback) =>
              back_wheel = ?
          WHERE id = ?`,
         [file_name, name, front_wheel, back_wheel, id],
-        callback
+        function(err, results) {
+            mysqlConnector.close();
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(200).send(results);
+            }
+        }
     );
-    mysqlConnector.close();
 }
 
-const deleteModel = (id, callback) =>
+const deleteModel = (req, res) =>
 {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
+    const {id} = req.params;
     mysqlConnector.query(
         `DELETE
          FROM models
          WHERE id = ?`,
         [id],
-        callback
+        function(err, results) {
+            mysqlConnector.close();
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(200).send(results);
+            }
+        }
     );
-    mysqlConnector.close();
 }
 
-const getModels = (callback) =>
+const getModels = (req, res) =>
 {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
@@ -54,23 +74,36 @@ const getModels = (callback) =>
         `SELECT *
          FROM models`,
         [],
-        callback,
+        function(err, results) {
+            mysqlConnector.close();
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(200).send(results);
+            }
+        }
     );
-    mysqlConnector.close();
 }
 
-const getModelById = (id, callback) =>
+const getModelById = (req, res) =>
 {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
+    const {id} = req.params;
     mysqlConnector.query(
         `SELECT *
          FROM models
          WHERE id = ?`,
         [id],
-        callback
+        function(err, results) {
+            mysqlConnector.close();
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(200).send(results);
+            }
+        }
     );
-    mysqlConnector.close();
 }
 
 module.exports = {
