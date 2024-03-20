@@ -69,8 +69,30 @@ const download = (req, res) => {
     })
 };
 
+const deleteFile = (req, res) => {
+    const fileName = req.params.name;
+    const directoryPath = __basedir + "/public/";
+
+    fs.unlink
+    (
+        directoryPath + fileName,
+        function(err) {
+            if (err) {
+                res.status(500).send({
+                    message: "Could not delete the file",
+                });
+            } else {
+                res.status(200).send({
+                    message: "File deleted successfully",
+                });
+            }
+        }
+    );
+}
+
 module.exports = {
     upload,
     getListFiles,
     download,
+    deleteFile,
 };
