@@ -10,7 +10,7 @@ let routes = (app) => {
     router.delete("/files/:name", uploadController.deleteFile);
 
     router.post("/model", modelController.addModel);
-    router.put("/model/:id", modelController.updateModel);
+    router.patch("/model/:id", modelController.updateModel);
     router.delete("/model/:id", modelController.deleteModel);
     router.get("/model", modelController.getModels);
     router.get("/model/:id", modelController.getModelById);
