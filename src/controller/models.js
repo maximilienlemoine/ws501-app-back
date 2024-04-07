@@ -37,8 +37,6 @@ const addModel = (req, res) => {
         `INSERT INTO models (
                     file_name,
                     name,
-                    file_name,
-                    name,
                     back_backery_bois,
                     back_backery_standard,
                     back_daily,
@@ -66,7 +64,7 @@ const addModel = (req, res) => {
                     suspension_fork,
                     suspension_seat
         )
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
             file_name,
             name,
