@@ -1,15 +1,103 @@
 const MysqlConnector = require('../util/mysqlConnector');
 
-const addModel = (req, res) =>
-{
+const addModel = (req, res) => {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
-    const {file_name, name, front_wheel, back_wheel} = req.body;
+    const {
+        file_name,
+        name,
+        back_backery_bois,
+        back_backery_standard,
+        back_daily,
+        back_daily_mixte,
+        back_epic_bois,
+        back_epic_standard,
+        back_luggage_rack,
+        back_thule_bag,
+        back_woody,
+        belt,
+        central_stand,
+        chain,
+        frame,
+        front_backery_bois,
+        front_backery_standard,
+        front_daily,
+        front_daily_mixte,
+        front_epic_bois,
+        front_epic_standard,
+        front_luggage_rack,
+        front_woody,
+        normal_fork,
+        normal_seat,
+        rear_stand,
+        suspension_fork,
+        suspension_seat
+    } = req.body;
     mysqlConnector.query(
-        `INSERT INTO models (file_name, name, front_wheel, back_wheel)
-         VALUES (?, ?, ?, ?)`,
-        [file_name, name, front_wheel, back_wheel],
-        function(err, results) {
+        `INSERT INTO models (
+                    file_name,
+                    name,
+                    file_name,
+                    name,
+                    back_backery_bois,
+                    back_backery_standard,
+                    back_daily,
+                    back_daily_mixte,
+                    back_epic_bois,
+                    back_epic_standard,
+                    back_luggage_rack,
+                    back_thule_bag,
+                    back_woody,
+                    belt,
+                    central_stand,
+                    chain,
+                    frame,
+                    front_backery_bois,
+                    front_backery_standard,
+                    front_daily,
+                    front_daily_mixte,
+                    front_epic_bois,
+                    front_epic_standard,
+                    front_luggage_rack,
+                    front_woody,
+                    normal_fork,
+                    normal_seat,
+                    rear_stand,
+                    suspension_fork,
+                    suspension_seat
+        )
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+            file_name,
+            name,
+            back_backery_bois,
+            back_backery_standard,
+            back_daily,
+            back_daily_mixte,
+            back_epic_bois,
+            back_epic_standard,
+            back_luggage_rack,
+            back_thule_bag,
+            back_woody,
+            belt,
+            central_stand,
+            chain,
+            frame,
+            front_backery_bois,
+            front_backery_standard,
+            front_daily,
+            front_daily_mixte,
+            front_epic_bois,
+            front_epic_standard,
+            front_luggage_rack,
+            front_woody,
+            normal_fork,
+            normal_seat,
+            rear_stand,
+            suspension_fork,
+            suspension_seat
+        ],
+        function (err, results) {
             mysqlConnector.close();
             if (err) {
                 res.status(500).send(err);
@@ -20,21 +108,103 @@ const addModel = (req, res) =>
     );
 }
 
-const updateModel = (req, res) =>
-{
+const updateModel = (req, res) => {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
-    const {file_name, name, front_wheel, back_wheel} = req.body;
+    const {
+        file_name,
+        name,
+        back_backery_bois,
+        back_backery_standard,
+        back_daily,
+        back_daily_mixte,
+        back_epic_bois,
+        back_epic_standard,
+        back_luggage_rack,
+        back_thule_bag,
+        back_woody,
+        belt,
+        central_stand,
+        chain,
+        frame,
+        front_backery_bois,
+        front_backery_standard,
+        front_daily,
+        front_daily_mixte,
+        front_epic_bois,
+        front_epic_standard,
+        front_luggage_rack,
+        front_woody,
+        normal_fork,
+        normal_seat,
+        rear_stand,
+        suspension_fork,
+        suspension_seat
+    } = req.body;
     const {id} = req.params;
     mysqlConnector.query(
         `UPDATE models
-         SET file_name = ?,
-             name = ?,
-             front_wheel = ?,
-             back_wheel = ?
+         SET file_name              = ?,
+             name                   = ?,
+             back_backery_bois      = ?,
+             back_backery_standard  = ?,
+             back_daily             = ?,
+             back_daily_mixte       = ?,
+             back_epic_bois         = ?,
+             back_epic_standard     = ?,
+             back_luggage_rack      = ?,
+             back_thule_bag         = ?,
+             back_woody             = ?,
+             belt                   = ?,
+             central_stand          = ?,
+             chain                  = ?,
+             frame                  = ?,
+             front_backery_bois     = ?,
+             front_backery_standard = ?,
+             front_daily            = ?,
+             front_daily_mixte      = ?,
+             front_epic_bois        = ?,
+             front_epic_standard    = ?,
+             front_luggage_rack     = ?,
+             front_woody            = ?,
+             normal_fork            = ?,
+             normal_seat            = ?,
+             rear_stand             = ?,
+             suspension_fork        = ?,
+             suspension_seat        = ?
          WHERE id = ?`,
-        [file_name, name, front_wheel, back_wheel, id],
-        function(err, results) {
+        [
+            file_name,
+            name,
+            back_backery_bois,
+            back_backery_standard,
+            back_daily,
+            back_daily_mixte,
+            back_epic_bois,
+            back_epic_standard,
+            back_luggage_rack,
+            back_thule_bag,
+            back_woody,
+            belt,
+            central_stand,
+            chain,
+            frame,
+            front_backery_bois,
+            front_backery_standard,
+            front_daily,
+            front_daily_mixte,
+            front_epic_bois,
+            front_epic_standard,
+            front_luggage_rack,
+            front_woody,
+            normal_fork,
+            normal_seat,
+            rear_stand,
+            suspension_fork,
+            suspension_seat,
+            id
+        ],
+        function (err, results) {
             mysqlConnector.close();
             if (err) {
                 res.status(500).send(err);
@@ -45,8 +215,7 @@ const updateModel = (req, res) =>
     );
 }
 
-const deleteModel = (req, res) =>
-{
+const deleteModel = (req, res) => {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
     const {id} = req.params;
@@ -55,7 +224,7 @@ const deleteModel = (req, res) =>
          FROM models
          WHERE id = ?`,
         [id],
-        function(err, results) {
+        function (err, results) {
             mysqlConnector.close();
             if (err) {
                 res.status(500).send(err);
@@ -66,15 +235,14 @@ const deleteModel = (req, res) =>
     );
 }
 
-const getModels = (req, res) =>
-{
+const getModels = (req, res) => {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
     mysqlConnector.query(
         `SELECT *
          FROM models`,
         [],
-        function(err, results) {
+        function (err, results) {
             mysqlConnector.close();
             if (err) {
                 res.status(500).send(err);
@@ -85,8 +253,7 @@ const getModels = (req, res) =>
     );
 }
 
-const getModelById = (req, res) =>
-{
+const getModelById = (req, res) => {
     const mysqlConnector = new MysqlConnector();
     mysqlConnector.connect();
     const {id} = req.params;
@@ -95,7 +262,7 @@ const getModelById = (req, res) =>
          FROM models
          WHERE id = ?`,
         [id],
-        function(err, results) {
+        function (err, results) {
             mysqlConnector.close();
             if (err) {
                 res.status(500).send(err);
