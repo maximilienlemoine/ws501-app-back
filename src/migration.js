@@ -31,6 +31,7 @@ mysqlConnector.query(
                 central_stand VARCHAR(255),
                 front_luggage_rack VARCHAR(255),
                 back_luggage_rack VARCHAR(255),
+                simple_back_rack VARCHAR(255),
                 front_daily VARCHAR(255),
                 back_daily VARCHAR(255),
                 front_daily_mixte VARCHAR(255),
